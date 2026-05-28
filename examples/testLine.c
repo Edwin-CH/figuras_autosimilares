@@ -1,10 +1,13 @@
 #include "../turtlec.h"
 
-void koch(Turtle *, int, int);
-void snowflake(Turtle *, int, int);
+void splitline(Turtle *t, int length, int count);
+void koch(Turtle *t, int length, int count);
+void snowFlakes(Turtle *t, int length, int count);
+void drawTriangle(Turtle *t, int length);
+void sierpinski(Turtle *t, int length, int depth);
 
 int main(void){
-  TurtleApp *app = turtleAppCreate(800, 800, "Test Line");
+  TurtleApp *app = turtleAppCreate(800, 640, "Test Line");
 
   if(app == NULL)
     return 1;
@@ -12,40 +15,83 @@ int main(void){
   Turtle *t = turtleAppGetTurtle(app);
 
   turtlePenUp(t);
-  turtleGoTo(t, 100.0f, 100.0f);
+  turtleGoTo(t, 150.0f, 200.0f);
   turtlePenDown(t);
 
-  turtleSetColor(t, 255, 250, 0);
+  turtleSetColor(t, 140, 240, 255);
   turtleSetSpeed(t, 5.0f);
-  // turtleForward(t, 300.0f);
-  snowflake(t, 200, 3);	
+  //turtleForward(t, 300.0f);
+  //splitline(t, 150, 1);
+  //snowFlakes(t, 200, 3);
+  sierpinski(t, 100, 1);
 
   turtleAppRun(app);
   turtleAppDestroy(app);
   return 0;
 }
 
-void koch(Turtle *t, int len, int count){
-	if (count == 0){
-		turtleForward(t, len);
-		return ;
-	}
-	koch(t, len / 3.0, count - 1);
-	turtleLeft(t, 60.0);
-	koch(t, len / 3.0, count -1);
-	turtleRight(t, 120.0);
-	koch(t, len / 3.0, count - 1);
-	turtleLeft(t, 60.0);
-	koch(t, len / 3.0, count - 1);
-	turtleRight(t, 150.0);
+void splitline (Turtle *t, int length, int count){
+  if (count == 0) {
+    turtleForward(t, length);
+    return;
+  }
+  splitline(t, length / 2.0, count - 1);
+  turtleLeft(t, 60.0);
+  splitline(t, length / 2.0, count - 1);
+  turtleRight(t, 60.0);
 }
 
-void snowflake(Turtle *t, int len, int count){
-	koch(t, len, count);
-	turtleRight(t, 120.0); 
-	koch(t, len, count);
-	turtleRight(t, 120.0);
-	koch(t, len, count);
+void koch(Turtle *t, int length, int count){
+  if (count == 0){
+    turtleForward(t, length);
+    return;
+  }
+  length /= 4.0;
+  koch(t, length, count - 1);
+  turtleLeft(t, 60.0);
+  koch(t, length, count - 1);
+  turtleRight(t, 120.0);
+  koch(t, length, count - 1);
+  turtleLeft(t, 60.0);
+  koch(t, length, count - 1);
 }
 
+void snowFlakes(Turtle *t, int length, int count){
+  for (int i = 0; i < 3; i++){
+    koch(t, length, count);
+    turtleRight(t, 120.0);
+  }
+}
 
+void drawTriangle(Turtle *t, int length) {
+    for (int i = 0; i < 3; i++) {
+        turtleForward(t, length);
+        turtleLeft(t, 120.0);
+    }
+}
+
+void sierpinski(Turtle *t, int length, int depth) {
+    if (depth == 0) {
+        drawTriangle(t, length);
+        return;
+    }
+    length /= 2.0;
+
+    sierpinski(t, length, depth - 1);
+
+    turtleForward(t, length);
+    sierpinski(t, length, depth - 1);
+
+    turtleLeft(t, 60.0);
+    turtleForward(t, length);
+    turtleRight(t, 60.0);
+    sierpinski(t, length, depth - 1);
+
+    turtleRight(t, 60.0);
+    turtleBackward(t, length);
+    turtleLeft(t, 60.0);
+    sierpinski(t, length, depth - 1);
+    turtleRight(t, 120.0);
+    turtleForward(t, length);
+
+}
