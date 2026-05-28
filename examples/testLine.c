@@ -26,7 +26,8 @@ int main(void){
   //turtleForward(t, 300.0f);
   //splitline(t, 150, 1);
   //snowFlakes(t, 200, 3);
-  sierpinski(t, 100, 1);
+  //sierpinski(t, 100, 1);
+  fractalTree(t, 100, 4);
 
   turtleAppRun(app);
   turtleAppDestroy(app);
