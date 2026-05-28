@@ -3,8 +3,11 @@
 void splitline(Turtle *t, int length, int count);
 void koch(Turtle *t, int length, int count);
 void snowFlakes(Turtle *t, int length, int count);
+
 void drawTriangle(Turtle *t, int length);
 void sierpinski(Turtle *t, int length, int depth);
+
+void fractalTree(Turtle *t, int length, int depth);
 
 int main(void){
   TurtleApp *app = turtleAppCreate(800, 640, "Test Line");
@@ -93,5 +96,5 @@ void sierpinski(Turtle *t, int length, int depth) {
     sierpinski(t, length, depth - 1);
     turtleRight(t, 120.0);
     turtleForward(t, length);
-
 }
+
