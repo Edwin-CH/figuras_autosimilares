@@ -98,3 +98,17 @@ void sierpinski(Turtle *t, int length, int depth) {
     turtleForward(t, length);
 }
 
+void fractalTree(Turtle *t, int length, int depth){
+  if (depth == 0 || length < 5)
+    return;
+  turtleForward(t, length);
+  turtleLeft(t, 30);
+  fractalTree(t, length * 0.7, depth - 1);
+  turtleRight(t, 60);
+  fractalTree(t, length * 0.7, depth - 1);
+  turtleLeft(t, 30);
+  turtleBackward(t, length);
+}
+
+
+
