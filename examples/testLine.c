@@ -28,7 +28,8 @@ int main(void){
   //splitline(t, 150, 1);
   //snowFlakes(t, 200, 3);
   //sierpinski(t, 100, 1);
-  fractalTree(t, 100, 9);
+  //fractalTree(t, 100, 9);
+  levy(t, 150, 4);
 
   turtleAppRun(app);
   turtleAppDestroy(app);
@@ -116,5 +117,17 @@ void fractalTree(Turtle *t, int length, int depth){
   turtleBackward(t, length);
 }
 
+void levy(Turtle *t, int length, int depth){
+  if (depth == 0){
+    turtleForward(t, length);
+    return;
+  }
 
+  length /= sqrt(2);
+  turtleLeft(t, 45);
+  levy(t, length, depth - 1);
+  turtleRight(t, 90);
+  levy(t, length, depth - 1);
+  turtleLeft(t, 45);
+}
 
