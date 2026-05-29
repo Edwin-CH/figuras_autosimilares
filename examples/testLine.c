@@ -8,6 +8,7 @@ void drawTriangle(Turtle *t, int length);
 void sierpinski(Turtle *t, int length, int depth);
 
 void fractalTree(Turtle *t, int length, int depth);
+void levy(Turtle *t, int length, int depth);
 
 int main(void){
   TurtleApp *app = turtleAppCreate(800, 640, "Test Line");
