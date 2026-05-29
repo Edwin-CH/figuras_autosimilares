@@ -27,7 +27,7 @@ int main(void){
   //splitline(t, 150, 1);
   //snowFlakes(t, 200, 3);
   //sierpinski(t, 100, 1);
-  fractalTree(t, 100, 4);
+  fractalTree(t, 100, 9);
 
   turtleAppRun(app);
   turtleAppDestroy(app);
@@ -105,13 +105,13 @@ void fractalTree(Turtle *t, int length, int depth){
   if (depth > 5)
     turtleSetColor(t, 120, 70, 20);
   else
-    turtleSetColor(t, 0. 200, 0);
+    turtleSetColor(t, 0, 200, 0);
   turtleForward(t, length);
-  turtleLeft(t, 30);
-  fractalTree(t, length * 0.7, depth - 1);
-  turtleRight(t, 60);
-  fractalTree(t, length * 0.7, depth - 1);
-  turtleLeft(t, 30);
+  turtleLeft(t, 20);
+  fractalTree(t, length * 0.8, depth - 1);
+  turtleRight(t, 40);
+  fractalTree(t, length * 0.8, depth - 1);
+  turtleLeft(t, 20);
   turtleBackward(t, length);
 }
 
