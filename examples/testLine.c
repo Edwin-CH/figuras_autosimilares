@@ -1,4 +1,5 @@
 #include "../turtlec.h"
+#include <math.h>
 
 void splitline(Turtle *t, int length, int count);
 void koch(Turtle *t, int length, int count);
