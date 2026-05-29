@@ -30,7 +30,7 @@ int main(void){
   //snowFlakes(t, 200, 3);
   //sierpinski(t, 100, 1);
   //fractalTree(t, 100, 9);
-  levy(t, 150, 4);
+  levy(t, 150, 7);
 
   turtleAppRun(app);
   turtleAppDestroy(app);
