@@ -115,6 +115,9 @@ void fractalTree(Turtle *t, int length, int depth){
   fractalTree(t, length * 0.7, depth - 1);
   turtleRight(t, 30);
   fractalTree(t, length * 0.7, depth - 1);
+  turtleRight(t, 30);
+  fractalTree(t, length * 0.7, depth - 1);
+
   turtleLeft(t, 30);
   turtleBackward(t, length);
 }
