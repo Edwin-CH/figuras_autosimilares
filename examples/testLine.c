@@ -115,8 +115,8 @@ void fractalTree(Turtle *t, int length, int depth){
     turtleSetColor(t, 255, 0, 255);
   if(depth == 5)
     turtleSetColor(t, 0, 0, 254);
-  else
-    turtleSetColor(t, 0, 200, 0);
+  if(depth > 5)
+    turtleSetColor(t, 255, 145, 230);
 
   turtleForward(t, length);
   turtleLeft(t, 30);
@@ -125,9 +125,13 @@ void fractalTree(Turtle *t, int length, int depth){
   fractalTree(t, length * 0.7, depth - 1);
   turtleRight(t, 30);
   fractalTree(t, length * 0.6, depth - 1);
+  
+  turtleSetColor(t, 0, 0 ,0);
 
   turtleLeft(t, 30);
   turtleBackward(t, length);
+
+
 }
 
 void levy(Turtle *t, int length, int depth){
