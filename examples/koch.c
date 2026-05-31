@@ -9,6 +9,7 @@ int main(void){
 
   if(app == NULL)
     return 1;
+  Turtle *t = turtleAppGetTurtle(app);
   turtlePenUp(t);
   turtleGoTo(t, 150.0f, 200.0f);
   turtlePenDown(t);
