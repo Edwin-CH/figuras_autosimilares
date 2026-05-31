@@ -105,17 +105,18 @@ void sierpinski(Turtle *t, int length, int depth) {
 void fractalTree(Turtle *t, int length, int depth){
   if (depth == 0 || length < 5)
     return;
+
   if (depth == 1)
     turtleSetColor(t, 120, 70, 20);
-  if(depth == 2)
+  else if(depth == 2)
     turtleSetColor(t, 255, 255, 0);
-  if(depth == 3)
+  else if(depth == 3)
     turtleSetColor(t, 255, 120, 0);
-  if(depth == 4)
+  else if(depth == 4)
     turtleSetColor(t, 255, 0, 255);
-  if(depth == 5)
+  else if(depth == 5)
     turtleSetColor(t, 0, 0, 254);
-  if(depth > 5)
+  else
     turtleSetColor(t, 255, 145, 230);
 
   turtleForward(t, length);
@@ -125,8 +126,6 @@ void fractalTree(Turtle *t, int length, int depth){
   fractalTree(t, length * 0.7, depth - 1);
   turtleRight(t, 30);
   fractalTree(t, length * 0.6, depth - 1);
-  
-  turtleSetColor(t, 0, 0 ,0);
 
   turtleLeft(t, 30);
   turtleBackward(t, length);
